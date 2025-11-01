@@ -69,10 +69,10 @@
 
 ## Allure отчет
 
-![Allure Report Part 1](screenshots/allure_report1.jp)
+![Allure Report Part 1](screenshots/allure_report1.jpg)
 
-![Allure Report Part 2](screenshots/allure_report2.jp)
+![Allure Report Part 2](screenshots/allure_report2.jpg)
 
-![Allure Report Part 3](screenshots/allure_report3.jp)
+![Allure Report Part 3](screenshots/allure_report3.jpg)
 
-![Allure Report Part 4](screenshots/allure_report4.jp)
+![Allure Report Part 4](screenshots/allure_report4.jpg)
