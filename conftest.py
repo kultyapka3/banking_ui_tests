@@ -2,6 +2,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+import subprocess
 
 @pytest.fixture(scope='function')
 def driver():
@@ -12,3 +13,13 @@ def driver():
     driver = webdriver.Chrome(service=service, options=options)
     yield driver
     driver.quit()
+
+# Хук для генерации отчетов Allure
+@pytest.hookimpl(trylast=True)
+def pytest_sessionfinish(session, exitstatus):
+    # Если процесс не главный, то не запускаем
+    if hasattr(session.config, 'workerinput'):
+        return
+
+    allure_results_dir = session.config.getoption('--alluredir')
+    subprocess.Popen(['allure.bat', 'serve', allure_results_dir], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
