@@ -111,7 +111,7 @@ pip install -r requirements.txt
 2. Сгенерируйте и откройте HTML-отчет:
 
     ```bash
-    allure serve allure-results
+    allure serve allure_results
     ```
 
 ---
