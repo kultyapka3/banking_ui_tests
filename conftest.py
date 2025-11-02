@@ -9,6 +9,7 @@ import os
 def driver():
     service = Service(ChromeDriverManager().install())
     options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
     options.page_load_strategy = 'eager'
 
     driver = webdriver.Chrome(service=service, options=options)
