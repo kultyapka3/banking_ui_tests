@@ -5,7 +5,6 @@ import allure
 
 from pages.manager_page_locators import ManagerPageLocators
 
-
 class ManagerPage:
     def __init__(self, driver):
         self.driver = driver
