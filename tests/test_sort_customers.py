@@ -1,3 +1,4 @@
+import pytest
 import allure
 
 from pages.manager_page import ManagerPage
@@ -5,6 +6,8 @@ from utils import config
 
 @allure.feature('Тест-кейс №02')
 @allure.story('Сортировка клиентов по имени (First Name)')
+@pytest.mark.ui         # UI test
+@pytest.mark.medium     # Приортитет - средний
 def test_sort_customers_by_first_name(driver):
     manager_page = ManagerPage(driver)
     manager_page.open(config.BASE_URL)

@@ -1,3 +1,4 @@
+import pytest
 import allure
 
 from pages.manager_page import ManagerPage
@@ -6,6 +7,8 @@ from utils import config
 
 @allure.feature('Тест-кейс №01')
 @allure.story('Создание клиента с генерацией данных (Add Customer)')
+@pytest.mark.ui         # UI test
+@pytest.mark.high       # Приортитет - высокий
 def test_add_customer_with_generated_data(driver):
     post_code = generate_post_code(length=10)
     first_name = post_code_to_first_name(post_code)

@@ -1,3 +1,4 @@
+import pytest
 import allure
 
 from pages.manager_page import ManagerPage
@@ -6,6 +7,8 @@ from utils import config
 
 @allure.feature('Тест-кейс №03')
 @allure.story('Удаление клиента с именем, длина которого ближе всего к средней')
+@pytest.mark.ui         # UI test
+@pytest.mark.high       # Приортитет - высокий
 def test_delete_customer_with_average_name_length(driver):
     manager_page = ManagerPage(driver)
     manager_page.open(config.BASE_URL)
