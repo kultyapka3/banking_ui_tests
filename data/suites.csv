@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Nov 02 15:43:42 UTC 2025","Sun Nov 02 15:43:44 UTC 2025","1965","tests","test_delete_customer","","","","test_delete_customer_with_average_name_length",""
+"passed","Sun Nov 02 15:43:42 UTC 2025","Sun Nov 02 15:43:44 UTC 2025","2191","tests","test_sort_customers","","","","test_sort_customers_by_first_name",""
+"passed","Sun Nov 02 15:43:42 UTC 2025","Sun Nov 02 15:43:45 UTC 2025","2993","tests","test_add_customer","","","","test_add_customer_with_generated_data",""
