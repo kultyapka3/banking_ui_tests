@@ -37,6 +37,7 @@ jobs:
         allure --version
 
     - name: Run tests with pytest and Allure
+      continue-on-error: true
       run: |
         pytest --alluredir=./allure_results -n 3
 
@@ -50,3 +51,9 @@ jobs:
         name: allure_report
         path: allure_report/
         retention-days: 7
+
+    - name: Deploy Allure Report to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./allure_report
