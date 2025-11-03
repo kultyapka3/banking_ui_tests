@@ -1,7 +1,7 @@
 import random
 import string
 
-def generate_post_code(length=10):
+def generate_post_code(length: int = 10) -> str:
     """
     Генерирует случайный номер из 10 цифр
     :type length: int
@@ -12,7 +12,7 @@ def generate_post_code(length=10):
 
     return ''.join(random.choices(string.digits, k=length))
 
-def post_code_to_first_name(post_code_str):
+def post_code_to_first_name(post_code_str: str) -> str:
     """
     Преобразует строковый Post Code в имя, где каждая пара цифр - индекс буквы (0-25)
     0 -> 'a', 1 -> 'b', ..., 25 -> 'z', 26 -> 'a', 27 -> 'b', и т. д.

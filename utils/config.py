@@ -1,3 +1,3 @@
 # Конфигурации
-BASE_URL = "https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager"
-DEFAULT_TIMEOUT = 10
+BASE_URL: str = "https://www.globalsqa.com/angularJs-protractor/BankingProject/#/manager"
+DEFAULT_TIMEOUT: int = 10

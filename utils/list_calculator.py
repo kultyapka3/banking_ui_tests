@@ -1,4 +1,6 @@
-def calculate_average_length(names_list):
+from typing import List, Optional
+
+def calculate_average_length(names_list: List[str]) -> float:
     """
     Вычисляет среднее арифметическое длин имен
     :type names_list: List[str]
@@ -11,13 +13,13 @@ def calculate_average_length(names_list):
 
     return total_length / len(names_list)
 
-def find_name_closest_to_average(names_list, average_length):
+def find_name_closest_to_average(names_list: List[str], average_length: float) -> Optional[str]:
     """
     Находит имя из списка, длина которого ближе всего к средней
     Если несколько имён имеют одинаковую минимальную разницу, возвращается первое найденное
     :type names_list: List[str]
     :type average_length: float
-    :rtype: str
+    :rtype: str or None
     """
     if not names_list:
         return None
