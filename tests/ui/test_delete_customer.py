@@ -5,7 +5,7 @@ import allure
 
 from pages.manager_page import ManagerPage
 from utils.list_calculator import calculate_average_length, find_name_closest_to_average
-from utils import config
+from data import data_ui
 
 @allure.feature('Тест-кейс №03')
 @allure.story('Удаление клиента с именем, длина которого ближе всего к средней')
@@ -13,7 +13,7 @@ from utils import config
 @pytest.mark.high       # Приортитет - высокий
 def test_delete_customer_with_average_name_length(driver: WebDriver) -> None:
     manager_page: ManagerPage = ManagerPage(driver)
-    manager_page.open(config.BASE_URL)
+    manager_page.open(data_ui.BASE_URL)
 
     manager_page.open_customers_tab()
 

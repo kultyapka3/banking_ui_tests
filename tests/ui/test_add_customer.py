@@ -5,7 +5,7 @@ import allure
 
 from pages.manager_page import ManagerPage
 from utils.data_generator import generate_post_code, post_code_to_first_name
-from utils import config
+from data import data_ui
 
 @allure.feature('Тест-кейс №01')
 @allure.story('Создание клиента с генерацией данных (Add Customer)')
@@ -17,7 +17,7 @@ def test_add_customer_with_generated_data(driver: WebDriver) -> None:
     last_name: str = 'Test'
 
     manager_page: ManagerPage = ManagerPage(driver)
-    manager_page.open(config.BASE_URL)
+    manager_page.open(data_ui.BASE_URL)
 
     manager_page.open_add_customer_tab() \
                 .add_customer(first_name, last_name, post_code)
