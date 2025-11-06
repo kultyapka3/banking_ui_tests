@@ -192,5 +192,3 @@ pip install -r requirements.txt
 ![Allure Report Part 2](screenshots/allure_report2.jpg)
 
 ![Allure Report Part 3](screenshots/allure_report3.jpg)
-
-![Allure Report Part 4](screenshots/allure_report4.jpg)
