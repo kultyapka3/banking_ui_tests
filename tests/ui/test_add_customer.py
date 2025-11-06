@@ -9,6 +9,15 @@ from data import data_ui
 
 @allure.feature('Тест-кейс №01')
 @allure.story('Создание клиента с генерацией данных (Add Customer)')
+@allure.title('Создание клиента с генерацией данных (Post Code -> First Name)')
+@allure.description('''
+Тест проверяет создание нового клиента с автоматически сгенерированными данными:
+- Post Code генерируется как 10-значное число.
+- First Name формируется на основе Post Code по логике: пары цифр -> индекс буквы (0-25) -> буква.
+- Проверяется появление алерта "Customer added successfully" и наличие клиента в таблице.
+''')
+@allure.parent_suite('UI Тесты')
+@allure.suite('Создание клиента с генерацией данных (Post Code -> First Name)')
 @pytest.mark.ui         # UI test
 @pytest.mark.high       # Приортитет - высокий
 def test_add_customer_with_generated_data(driver: WebDriver) -> None:

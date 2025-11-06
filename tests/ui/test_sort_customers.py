@@ -8,6 +8,14 @@ from data import data_ui
 
 @allure.feature('Тест-кейс №02')
 @allure.story('Сортировка клиентов по имени (First Name)')
+@allure.title('Сортировка клиентов по имени (First Name) в порядке Z-A и A-Z')
+@allure.description('''
+Тест проверяет корректность сортировки клиентов в таблице по столбцу First Name:
+- При первом клике по заголовку сортировка меняется на обратный алфавитный порядок (Z-A).
+- При втором клике — на алфавитный порядок (A-Z).
+''')
+@allure.parent_suite('UI Тесты')
+@allure.suite('Сортировка клиентов по имени (First Name) в порядке Z-A и A-Z')
 @pytest.mark.ui         # UI test
 @pytest.mark.medium     # Приортитет - средний
 def test_sort_customers_by_first_name(driver: WebDriver) -> None:
