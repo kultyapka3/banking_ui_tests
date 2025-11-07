@@ -2,8 +2,8 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 import allure
 
-from pages.base_page import BasePage
-from pages.manager_page_locators import ManagerPageLocators
+from ui.pages.base_page import BasePage
+from ui.pages.manager_page_locators import ManagerPageLocators
 
 class ManagerPage(BasePage):
     def __init__(self, driver: WebDriver):

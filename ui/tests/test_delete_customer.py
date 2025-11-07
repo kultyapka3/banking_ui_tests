@@ -3,8 +3,8 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 import allure
 
-from pages.manager_page import ManagerPage
-from utils.list_calculator import calculate_average_length, find_name_closest_to_average
+from ui.pages.manager_page import ManagerPage
+from ui.utils.list_calculator import calculate_average_length, find_name_closest_to_average
 from data import data_ui
 
 @allure.feature('Тест-кейс №03')

@@ -3,8 +3,8 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 import allure
 
-from pages.manager_page import ManagerPage
-from utils.data_generator import generate_post_code, post_code_to_first_name
+from ui.pages.manager_page import ManagerPage
+from ui.utils.data_generator import generate_post_code, post_code_to_first_name
 from data import data_ui
 
 @allure.feature('Тест-кейс №01')

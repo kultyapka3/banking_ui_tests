@@ -3,7 +3,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 import allure
 
-from pages.manager_page import ManagerPage
+from ui.pages.manager_page import ManagerPage
 from data import data_ui
 
 @allure.feature('Тест-кейс №02')
