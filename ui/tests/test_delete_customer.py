@@ -7,17 +7,17 @@ from ui.pages.manager_page import ManagerPage
 from ui.utils.list_calculator import calculate_average_length, find_name_closest_to_average
 from data import data_ui
 
-@allure.feature('Тест-кейс №03')
-@allure.story('Удаление клиента с именем, длина которого ближе всего к средней')
-@allure.title('Удаление клиента с именем, длина которого ближе всего к средней')
+@allure.feature('Banking App Manager Actions')
+@allure.story('Customers List')
+@allure.title('TC03: Удаление клиента с именем, длина которого ближе всего к средней')
 @allure.description('''
 Тест проверяет удаление клиента, чья длина имени ближе всего к средней длине всех имён в таблице:
-- Вычисляется средняя длина имён.
-- Определяется имя с минимальной разницей от средней длины.
-- Клиент удаляется, проверяется его отсутствие в таблице.
+- Вычисляется средняя длина имён
+- Определяется имя с минимальной разницей от средней длины
+- Клиент удаляется, проверяется его отсутствие в таблице
 ''')
 @allure.parent_suite('UI Тесты')
-@allure.suite('Удаление клиента с именем, длина которого ближе всего к средней')
+@allure.suite('Positive Tests')
 @pytest.mark.ui         # UI test
 @pytest.mark.high       # Приортитет - высокий
 def test_delete_customer_with_average_name_length(driver: WebDriver) -> None:

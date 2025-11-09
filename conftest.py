@@ -6,8 +6,11 @@ from webdriver_manager.chrome import ChromeDriverManager
 import subprocess
 import os
 
+from api.services.entity_service import EntityService
+
 from typing import Generator
 
+# Фикстура для UI тестов (веб-драйвер)
 @pytest.fixture(scope='function')
 def driver() -> Generator[WebDriver, None, None]:
     service = Service(ChromeDriverManager().install())
@@ -18,6 +21,12 @@ def driver() -> Generator[WebDriver, None, None]:
     driver = webdriver.Chrome(service=service, options=options)
     yield driver
     driver.quit()
+
+# Фикстура для API тестов (EntityService)
+@pytest.fixture(scope='function')
+def entity_service() -> Generator[EntityService, None, None]:
+    service = EntityService()
+    yield service
 
 # Хук для генерации отчетов Allure
 @pytest.hookimpl(trylast=True)
