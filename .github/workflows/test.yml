@@ -39,13 +39,27 @@ jobs:
         sudo ln -s $PWD/allure-2.27.0/bin/allure /usr/local/bin/allure
         allure --version
 
-    - name: Clone and setup test-service
+    - name: Clone test-service
       run: |
-        git clone https://github.com/sun6r0/test-service.git ../test-service-repo
+        git clone https://github.com/bondarenkokate73/simbirsoft_sdet_project.git ../test-service-repo
+
+    - name: Start test-service
+      run: |
         cd ../test-service-repo
+        echo "--- docker-compose.yml content ---"
+        cat docker-compose.yml
+        echo "----------------------------------"
         docker compose up --build -d
-        timeout 120 bash -c 'until curl -f http://localhost:8080/api/_/docs/swagger/; do sleep 5; done'
+        timeout 180 bash -c 'until curl -f http://localhost:8080/api/_/docs/swagger/; do sleep 10; done'
         echo "test-service is ready on http://localhost:8080"
+        
+    - name: Check test-service logs
+      run: |
+        cd ../test-service-repo
+        echo "--- test-service logs ---"
+        docker compose logs simbirsoft_sdet_project
+        echo "--- postgres logs ---"
+        docker compose logs postgres
 
     - name: Run UI tests
       continue-on-error: true
