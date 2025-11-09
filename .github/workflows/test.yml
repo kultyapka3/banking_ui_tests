@@ -43,7 +43,7 @@ jobs:
       run: |
         git clone https://github.com/sun6r0/test-service.git ../test-service-repo
         cd ../test-service-repo
-        docker-compose up --build -d
+        docker compose up --build -d
         timeout 120 bash -c 'until curl -f http://localhost:8080/api/_/docs/swagger/; do sleep 5; done'
         echo "test-service is ready on http://localhost:8080"
 
