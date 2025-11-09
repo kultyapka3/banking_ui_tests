@@ -46,9 +46,6 @@ jobs:
     - name: Start test-service
       run: |
         cd ../test-service-repo
-        echo "--- docker-compose.yml content ---"
-        cat docker-compose.yml
-        echo "----------------------------------"
         docker compose up --build -d
         timeout 180 bash -c 'until curl -f http://localhost:8080/api/_/docs/swagger/; do sleep 10; done'
         echo "test-service is ready on http://localhost:8080"
