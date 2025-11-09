@@ -54,7 +54,7 @@ jobs:
       run: |
         cd ../test-service-repo
         echo "--- test-service logs ---"
-        docker compose logs simbirsoft_sdet_project
+        docker compose logs service
         echo "--- postgres logs ---"
         docker compose logs postgres
 
