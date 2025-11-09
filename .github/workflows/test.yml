@@ -69,16 +69,6 @@ jobs:
       run: |
         pytest -m api --alluredir=./allure_results -n 5
 
-    - name: Check test-service logs (after tests)
-      run: |
-        cd ../test-service-repo
-        echo "--- test-service logs (after running tests) ---"
-        docker compose logs service
-        echo "--- postgres logs (after tests) ---"
-        docker compose logs postgres
-        echo "--- migrate logs (after tests) ---"
-        docker compose logs migrate
-
     - name: Generate Allure Report
       run: |
         allure generate ./allure_results -o ./allure_report --clean
