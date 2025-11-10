@@ -1,8 +1,10 @@
 import pytest
 import allure
 
+from typing import List
+
 from api.services.entity_service import EntityService
-from api.models.entity import EntityRequest
+from api.models.entity import EntityRequest, EntityResponse
 
 @allure.feature('API Entity Management')
 @allure.story('Get Entity')
@@ -19,21 +21,21 @@ from api.models.entity import EntityRequest
 @pytest.mark.api        # API test
 @pytest.mark.high       # Приортитет - высокий
 def test_get_entity_success(entity_service: EntityService) -> None:
-    initial_title = 'get entity'
-    initial_verified = False
-    initial_important_numbers = [4, 4]
+    initial_title: str = 'get entity'
+    initial_verified: bool = False
+    initial_important_numbers: List[int] = [4, 4]
 
-    entity_data = EntityRequest(
+    entity_data: EntityRequest = EntityRequest(
         title=initial_title,
         verified=initial_verified,
         important_numbers=initial_important_numbers
     )
 
     # Создаём сущность
-    created_id = entity_service.create_entity(entity_data)
+    created_id: str = entity_service.create_entity(entity_data)
 
     # Получаем сущность
-    retrieved_entity = entity_service.get_entity(created_id)
+    retrieved_entity: EntityResponse = entity_service.get_entity(created_id)
 
     # Проверяем созданную сущность
     assert retrieved_entity.id == int(created_id), \

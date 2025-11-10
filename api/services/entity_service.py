@@ -56,7 +56,7 @@ class EntityService:
         # Десериализация списка
         return [EntityResponse.model_validate(item) for item in entities_data]
 
-    @allure.step('Обновление сущности с ID "{entity_id}')
+    @allure.step('Обновление сущности с ID "{entity_id}"')
     def update_entity(self, entity_id: str, entity_data: EntityRequest) -> None:
         response = self.session.patch(
             f'{self.base_url}/api/patch/{entity_id}',
@@ -64,7 +64,7 @@ class EntityService:
         )
         response.raise_for_status()
 
-    @allure.step('Удаление сущности с ID "{entity_id}')
+    @allure.step('Удаление сущности с ID "{entity_id}"')
     def delete_entity(self, entity_id: str) -> None:
         response = self.session.delete(f'{self.base_url}/api/delete/{entity_id}')
         response.raise_for_status()

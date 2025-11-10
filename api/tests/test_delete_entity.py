@@ -1,10 +1,10 @@
 import pytest
-import requests # Импортируем requests для проверки HTTPError
+import requests
 
 import allure
 
 from api.services.entity_service import EntityService
-from api.models.entity import EntityRequest
+from api.models.entity import EntityRequest, EntityResponse
 
 @allure.feature('API Entity Management')
 @allure.story('Delete Entity')
@@ -21,19 +21,19 @@ from api.models.entity import EntityRequest
 @allure.suite('Positive Tests')
 @pytest.mark.api        # API test
 @pytest.mark.high       # Приортитет - высокий
-def test_delete_entity_success(entity_service: EntityService):
-    initial_title = 'delete entity'
-    entity_data = EntityRequest(
+def test_delete_entity_success(entity_service: EntityService) -> None:
+    initial_title: str = 'delete entity'
+    entity_data: EntityRequest = EntityRequest(
         title=initial_title,
         verified=False,
         important_numbers=[]
     )
 
     # Создаём сущность
-    created_id = entity_service.create_entity(entity_data)
+    created_id: str = entity_service.create_entity(entity_data)
 
     # Получаем сущность
-    entity = entity_service.get_entity(created_id)
+    entity: EntityResponse = entity_service.get_entity(created_id)
 
     # Проверяем созданную сущность
     assert entity.id == int(created_id), \
