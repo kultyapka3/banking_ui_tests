@@ -10,7 +10,7 @@ INFO     api.services.entity_service:entity_service.py:25 ID успешно со
 INFO     api.services.entity_service:entity_service.py:52 Получение списка сущностей с параметрами: {'title': None, 'verified': None, 'page': None, 'perPage': None}
 INFO     api.services.base_api:base_api.py:14 Отправка GET запроса на http://localhost:8080/api/getAll с параметрами: {'params': {'title': None, 'verified': None, 'page': None, 'perPage': None}}
 INFO     api.services.base_api:base_api.py:17 Получен ответ 200 для GET http://localhost:8080/api/getAll
-INFO     api.services.entity_service:entity_service.py:57 Получено 6 сущностей
+INFO     api.services.entity_service:entity_service.py:57 Получено 4 сущностей
 INFO     api.services.entity_service:entity_service.py:15 Инициализирован EntityService для http://localhost:8080
 INFO     api.services.entity_service:entity_service.py:73 Удаление сущности с ID: 4
 INFO     api.services.base_api:base_api.py:14 Отправка DELETE запроса на http://localhost:8080/api/delete/4 с параметрами: {}
