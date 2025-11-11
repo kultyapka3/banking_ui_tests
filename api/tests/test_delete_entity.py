@@ -35,7 +35,7 @@ def test_delete_entity_success(entity_service: EntityService) -> None:
     # Получаем сущность
     entity: EntityResponse = entity_service.get_entity(created_id)
 
-    # Проверяем созданную сущность
+    # Проверяем есть ли сущность
     assert entity.id == int(created_id), \
         f'Ожидалось, что ID будет "{created_id}", но получили "{entity.id}"'
 
@@ -45,6 +45,7 @@ def test_delete_entity_success(entity_service: EntityService) -> None:
     # Пытаемся получить удаленную сущность
     with pytest.raises(requests.HTTPError) as exc_info:
         entity_service.get_entity(created_id)
+
     # Проверяем, что статус ошибки соответствует удалению
     assert exc_info.value.response.status_code == 500, \
         f'Ожидалось, что код будет "500", но получили "{exc_info.value.response.status_code}"'

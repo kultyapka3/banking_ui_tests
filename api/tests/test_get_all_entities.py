@@ -34,6 +34,7 @@ def test_get_all_entities_success(entity_service: EntityService) -> None:
 
     # Записываем найденные ID
     found_ids: set[int] = {e.id for e in all_entities}
+
     # Проверяем есть ли созданные сущности
     assert all(int(id) in found_ids for id in created_ids), \
         f'Ожидалось, что ID будут "{created_ids}", но получили "{found_ids}"'
