@@ -14,3 +14,7 @@ INFO     api.services.entity_service:entity_service.py:75 Сущность с ID
 INFO     api.services.entity_service:entity_service.py:31 Получение сущности с ID: 4
 INFO     api.services.base_api:base_api.py:14 Отправка GET запроса на http://localhost:8080/api/get/4 с параметрами: {}
 INFO     api.services.base_api:base_api.py:17 Получен ответ 500 для GET http://localhost:8080/api/get/4
+INFO     api.services.entity_service:entity_service.py:15 Инициализирован EntityService для http://localhost:8080
+INFO     api.services.entity_service:entity_service.py:73 Удаление сущности с ID: 4
+INFO     api.services.base_api:base_api.py:14 Отправка DELETE запроса на http://localhost:8080/api/delete/4 с параметрами: {}
+INFO     api.services.base_api:base_api.py:17 Получен ответ 500 для DELETE http://localhost:8080/api/delete/4

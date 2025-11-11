@@ -1,0 +1,1 @@
+Ошибка при удалении сущности 4: 500 Server Error: Internal Server Error for url: http://localhost:8080/api/delete/4
