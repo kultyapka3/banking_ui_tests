@@ -1,0 +1,13 @@
+INFO     api.services.entity_service:entity_service.py:15 Инициализирован EntityService для http://localhost:8080
+INFO     api.services.entity_service:entity_service.py:19 Создание сущности с данными: {'addition': None, 'important_numbers': [4, 4], 'title': 'get entity', 'verified': False}
+INFO     api.services.base_api:base_api.py:14 Отправка POST запроса на http://localhost:8080/api/create с параметрами: {'json': {'addition': None, 'important_numbers': [4, 4], 'title': 'get entity', 'verified': False}}
+INFO     api.services.base_api:base_api.py:17 Получен ответ 200 для POST http://localhost:8080/api/create
+INFO     api.services.entity_service:entity_service.py:25 ID успешно созданной сущности: 5
+INFO     api.services.entity_service:entity_service.py:31 Получение сущности с ID: 5
+INFO     api.services.base_api:base_api.py:14 Отправка GET запроса на http://localhost:8080/api/get/5 с параметрами: {}
+INFO     api.services.base_api:base_api.py:17 Получен ответ 200 для GET http://localhost:8080/api/get/5
+INFO     api.services.entity_service:entity_service.py:34 Получены данные сущности с ID 5
+INFO     api.services.entity_service:entity_service.py:73 Удаление сущности с ID: 5
+INFO     api.services.base_api:base_api.py:14 Отправка DELETE запроса на http://localhost:8080/api/delete/5 с параметрами: {}
+INFO     api.services.base_api:base_api.py:17 Получен ответ 204 для DELETE http://localhost:8080/api/delete/5
+INFO     api.services.entity_service:entity_service.py:75 Сущность с ID 5 удалена успешно

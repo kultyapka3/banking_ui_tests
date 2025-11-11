@@ -2,20 +2,20 @@ INFO     api.services.entity_service:entity_service.py:15 Инициализир
 INFO     api.services.entity_service:entity_service.py:19 Создание сущности с данными: {'addition': None, 'important_numbers': [10], 'title': 'get all entities1', 'verified': True}
 INFO     api.services.base_api:base_api.py:14 Отправка POST запроса на http://localhost:8080/api/create с параметрами: {'json': {'addition': None, 'important_numbers': [10], 'title': 'get all entities1', 'verified': True}}
 INFO     api.services.base_api:base_api.py:17 Получен ответ 200 для POST http://localhost:8080/api/create
-INFO     api.services.entity_service:entity_service.py:25 ID успешно созданной сущности: 5
+INFO     api.services.entity_service:entity_service.py:25 ID успешно созданной сущности: 2
 INFO     api.services.entity_service:entity_service.py:19 Создание сущности с данными: {'addition': None, 'important_numbers': [10], 'title': 'get all entities2', 'verified': True}
 INFO     api.services.base_api:base_api.py:14 Отправка POST запроса на http://localhost:8080/api/create с параметрами: {'json': {'addition': None, 'important_numbers': [10], 'title': 'get all entities2', 'verified': True}}
 INFO     api.services.base_api:base_api.py:17 Получен ответ 200 для POST http://localhost:8080/api/create
-INFO     api.services.entity_service:entity_service.py:25 ID успешно созданной сущности: 6
+INFO     api.services.entity_service:entity_service.py:25 ID успешно созданной сущности: 3
 INFO     api.services.entity_service:entity_service.py:52 Получение списка сущностей с параметрами: {'title': None, 'verified': None, 'page': None, 'perPage': None}
 INFO     api.services.base_api:base_api.py:14 Отправка GET запроса на http://localhost:8080/api/getAll с параметрами: {'params': {'title': None, 'verified': None, 'page': None, 'perPage': None}}
 INFO     api.services.base_api:base_api.py:17 Получен ответ 200 для GET http://localhost:8080/api/getAll
-INFO     api.services.entity_service:entity_service.py:57 Получено 3 сущностей
-INFO     api.services.entity_service:entity_service.py:73 Удаление сущности с ID: 5
-INFO     api.services.base_api:base_api.py:14 Отправка DELETE запроса на http://localhost:8080/api/delete/5 с параметрами: {}
-INFO     api.services.base_api:base_api.py:17 Получен ответ 204 для DELETE http://localhost:8080/api/delete/5
-INFO     api.services.entity_service:entity_service.py:75 Сущность с ID 5 удалена успешно
-INFO     api.services.entity_service:entity_service.py:73 Удаление сущности с ID: 6
-INFO     api.services.base_api:base_api.py:14 Отправка DELETE запроса на http://localhost:8080/api/delete/6 с параметрами: {}
-INFO     api.services.base_api:base_api.py:17 Получен ответ 204 для DELETE http://localhost:8080/api/delete/6
-INFO     api.services.entity_service:entity_service.py:75 Сущность с ID 6 удалена успешно
+INFO     api.services.entity_service:entity_service.py:57 Получено 5 сущностей
+INFO     api.services.entity_service:entity_service.py:73 Удаление сущности с ID: 2
+INFO     api.services.base_api:base_api.py:14 Отправка DELETE запроса на http://localhost:8080/api/delete/2 с параметрами: {}
+INFO     api.services.base_api:base_api.py:17 Получен ответ 204 для DELETE http://localhost:8080/api/delete/2
+INFO     api.services.entity_service:entity_service.py:75 Сущность с ID 2 удалена успешно
+INFO     api.services.entity_service:entity_service.py:73 Удаление сущности с ID: 3
+INFO     api.services.base_api:base_api.py:14 Отправка DELETE запроса на http://localhost:8080/api/delete/3 с параметрами: {}
+INFO     api.services.base_api:base_api.py:17 Получен ответ 204 для DELETE http://localhost:8080/api/delete/3
+INFO     api.services.entity_service:entity_service.py:75 Сущность с ID 3 удалена успешно
