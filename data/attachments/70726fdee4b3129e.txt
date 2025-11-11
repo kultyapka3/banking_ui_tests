@@ -1,0 +1,13 @@
+2025-11-11 14:02:17 [INFO] api.services.entity_service: Инициализирован EntityService для http://localhost:8080
+2025-11-11 14:02:17 [INFO] api.services.entity_service: Создание сущности с данными: {'addition': None, 'important_numbers': [4, 4], 'title': 'get entity', 'verified': False}
+2025-11-11 14:02:17 [INFO] api.services.base_api: Отправка POST запроса на http://localhost:8080/api/create с параметрами: {'json': {'addition': None, 'important_numbers': [4, 4], 'title': 'get entity', 'verified': False}}
+2025-11-11 14:02:17 [INFO] api.services.base_api: Получен ответ 200 для POST http://localhost:8080/api/create
+2025-11-11 14:02:17 [INFO] api.services.entity_service: ID успешно созданной сущности: 3
+2025-11-11 14:02:17 [INFO] api.services.entity_service: Получение сущности с ID: 3
+2025-11-11 14:02:17 [INFO] api.services.base_api: Отправка GET запроса на http://localhost:8080/api/get/3 с параметрами: {}
+2025-11-11 14:02:17 [INFO] api.services.base_api: Получен ответ 200 для GET http://localhost:8080/api/get/3
+2025-11-11 14:02:17 [INFO] api.services.entity_service: Получены данные сущности с ID 3
+2025-11-11 14:02:17 [INFO] api.services.entity_service: Удаление сущности с ID: 3
+2025-11-11 14:02:17 [INFO] api.services.base_api: Отправка DELETE запроса на http://localhost:8080/api/delete/3 с параметрами: {}
+2025-11-11 14:02:17 [INFO] api.services.base_api: Получен ответ 204 для DELETE http://localhost:8080/api/delete/3
+2025-11-11 14:02:17 [INFO] api.services.entity_service: Сущность с ID 3 удалена успешно
