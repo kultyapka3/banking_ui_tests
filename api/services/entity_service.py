@@ -1,30 +1,27 @@
-import requests
 import allure
 
 from typing import List, Optional
 
+from api.services.base_api import APIClient
 from api.models.entity import EntityRequest, EntityResponse
 from data import data_api
 
-class EntityService:
-    def __init__(self, base_url=data_api.BASE_URL):
-        self.base_url = base_url
-        self.session = requests.Session()
+class EntityService(APIClient):
+    def __init__(self, base_url: str = data_api.BASE_URL):
+        super().__init__(base_url)
 
     @allure.step('Создание сущности')
     def create_entity(self, entity_data: EntityRequest) -> str:
-        response = self.session.post(
-            f'{self.base_url}/api/create',
+        response = self.post(
+            data_api.CREATE_ENDPOINT,
             json=entity_data.model_dump()
         )
-        response.raise_for_status()
 
         return response.text
 
     @allure.step('Получение сущности с ID "{entity_id}"')
     def get_entity(self, entity_id: str) -> EntityResponse:
-        response = self.session.get(f'{self.base_url}/api/get/{entity_id}')
-        response.raise_for_status()
+        response = self.get(data_api.GET_ENDPOINT.format(id=entity_id))
         entity_data = response.json()
 
         return EntityResponse.model_validate(entity_data)
@@ -48,8 +45,7 @@ class EntityService:
         if per_page is not None:
             params['perPage'] = per_page
 
-        response = self.session.get(f'{self.base_url}/api/getAll', params=params)
-        response.raise_for_status()
+        response = self.get(data_api.GET_ALL_ENDPOINT, params=params)
         raw_response = response.json()
         entities_data = raw_response.get('entity', [])      # извлекаем массив из ключа 'entity'
         
@@ -58,13 +54,11 @@ class EntityService:
 
     @allure.step('Обновление сущности с ID "{entity_id}"')
     def update_entity(self, entity_id: str, entity_data: EntityRequest) -> None:
-        response = self.session.patch(
-            f'{self.base_url}/api/patch/{entity_id}',
+        response = self.patch(
+            data_api.PATCH_ENDPOINT.format(id=entity_id),
             json=entity_data.model_dump()
         )
-        response.raise_for_status()
 
     @allure.step('Удаление сущности с ID "{entity_id}"')
     def delete_entity(self, entity_id: str) -> None:
-        response = self.session.delete(f'{self.base_url}/api/delete/{entity_id}')
-        response.raise_for_status()
+        response = self.delete(data_api.DELETE_ENDPOINT.format(id=entity_id))
