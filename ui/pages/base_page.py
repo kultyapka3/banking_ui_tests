@@ -7,13 +7,13 @@ from selenium.webdriver.common.by import By
 
 from typing import Tuple, Optional
 
-from utils import config
+from data import data_ui
 
 # Тип локатора для аннотаций
 Locator = Tuple[By, str]
 
 class BasePage:
-    def __init__(self, driver: WebDriver, default_timeout: int = config.DEFAULT_TIMEOUT):
+    def __init__(self, driver: WebDriver, default_timeout: int = data_ui.DEFAULT_TIMEOUT):
         self.driver = driver
         self.default_timeout = default_timeout
         self.wait = WebDriverWait(driver, default_timeout)

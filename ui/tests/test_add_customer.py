@@ -3,12 +3,21 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 import allure
 
-from pages.manager_page import ManagerPage
-from utils.data_generator import generate_post_code, post_code_to_first_name
-from utils import config
+from ui.pages.manager_page import ManagerPage
+from ui.utils.data_generator import generate_post_code, post_code_to_first_name
+from data import data_ui
 
-@allure.feature('Тест-кейс №01')
-@allure.story('Создание клиента с генерацией данных (Add Customer)')
+@allure.feature('Banking App Manager Actions')
+@allure.story('Add Customer')
+@allure.title('TC01: Создание клиента с генерацией данных')
+@allure.description('''
+Тест проверяет создание нового клиента с автоматически сгенерированными данными:
+- Post Code генерируется как 10-значное число
+- First Name формируется на основе Post Code по логике: пары цифр -> индекс буквы (0-25) -> буква
+- Проверяется появление алерта "Customer added successfully" и наличие клиента в таблице
+''')
+@allure.parent_suite('UI Тесты')
+@allure.suite('Positive Tests')
 @pytest.mark.ui         # UI test
 @pytest.mark.high       # Приортитет - высокий
 def test_add_customer_with_generated_data(driver: WebDriver) -> None:
@@ -17,7 +26,7 @@ def test_add_customer_with_generated_data(driver: WebDriver) -> None:
     last_name: str = 'Test'
 
     manager_page: ManagerPage = ManagerPage(driver)
-    manager_page.open(config.BASE_URL)
+    manager_page.open(data_ui.BASE_URL)
 
     manager_page.open_add_customer_tab() \
                 .add_customer(first_name, last_name, post_code)

@@ -2,5 +2,5 @@
 venv/
 __pycache__/
 .pytest_cache/
-# allure_results/
+allure_results/
 .idea/

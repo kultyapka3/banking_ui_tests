@@ -3,16 +3,24 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 import allure
 
-from pages.manager_page import ManagerPage
-from utils import config
+from ui.pages.manager_page import ManagerPage
+from data import data_ui
 
-@allure.feature('Тест-кейс №02')
-@allure.story('Сортировка клиентов по имени (First Name)')
+@allure.feature('Banking App Manager Actions')
+@allure.story('Customers List')
+@allure.title('TC02: Сортировка клиентов по имени')
+@allure.description('''
+Тест проверяет корректность сортировки клиентов в таблице по столбцу First Name:
+- При первом клике по заголовку сортировка меняется на обратный алфавитный порядок (Z-A)
+- При втором клике — на алфавитный порядок (A-Z)
+''')
+@allure.parent_suite('UI Тесты')
+@allure.suite('Positive Tests')
 @pytest.mark.ui         # UI test
 @pytest.mark.medium     # Приортитет - средний
 def test_sort_customers_by_first_name(driver: WebDriver) -> None:
     manager_page: ManagerPage = ManagerPage(driver)
-    manager_page.open(config.BASE_URL)
+    manager_page.open(data_ui.BASE_URL)
 
     manager_page.open_customers_tab()
 

@@ -39,10 +39,35 @@ jobs:
         sudo ln -s $PWD/allure-2.27.0/bin/allure /usr/local/bin/allure
         allure --version
 
-    - name: Run tests with pytest and Allure
+    - name: Clone test-service
+      run: |
+        git clone https://github.com/bondarenkokate73/simbirsoft_sdet_project.git ../test-service-repo
+
+    - name: Start test-service
       continue-on-error: true
       run: |
-        pytest --alluredir=./allure_results -n 3
+        cd ../test-service-repo
+        docker compose up --build -d
+        timeout 180 bash -c 'until curl -f http://localhost:8080/api/_/docs/swagger/; do sleep 10; done'
+        echo "test-service is ready on http://localhost:8080"
+        
+    - name: Check test-service logs
+      run: |
+        cd ../test-service-repo
+        echo "--- test-service logs ---"
+        docker compose logs service
+        echo "--- postgres logs ---"
+        docker compose logs postgres
+
+    - name: Run UI tests
+      continue-on-error: true
+      run: |
+        pytest -m ui --alluredir=./allure_results -n 3
+
+    - name: Run API tests
+      continue-on-error: true
+      run: |
+        pytest -m api --alluredir=./allure_results -n 5
 
     - name: Generate Allure Report
       run: |
