@@ -34,16 +34,12 @@ class EntityService(APIClient):
             page: Optional[int] = None,
             per_page: Optional[int] = None
     ) -> List[EntityResponse]:
-        params = {}
-
-        if title is not None:
-            params['title'] = title
-        if verified is not None:
-            params['verified'] = verified
-        if page is not None:
-            params['page'] = page
-        if per_page is not None:
-            params['perPage'] = per_page
+        params = {
+            'title': title,
+            'verified': verified,
+            'page': page,
+            'perPage': per_page
+        }
 
         response = self.get(data_api.GET_ALL_ENDPOINT, params=params)
         raw_response = response.json()
