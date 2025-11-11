@@ -1,8 +1,12 @@
 INFO     api.services.entity_service:entity_service.py:15 Инициализирован EntityService для http://localhost:8080
-INFO     api.services.entity_service:entity_service.py:19 Создание сущности с данными: {'addition': None, 'important_numbers': [4, 4], 'title': 'get entity', 'verified': False}
-INFO     api.services.base_api:base_api.py:14 Отправка POST запроса на http://localhost:8080/api/create с параметрами: {'json': {'addition': None, 'important_numbers': [4, 4], 'title': 'get entity', 'verified': False}}
+INFO     api.services.entity_service:entity_service.py:19 Создание сущности с данными: {'addition': {'additional_info': 'update additional', 'additional_number': 777}, 'important_numbers': [777, 777], 'title': 'update entity', 'verified': False}
+INFO     api.services.base_api:base_api.py:14 Отправка POST запроса на http://localhost:8080/api/create с параметрами: {'json': {'addition': {'additional_info': 'update additional', 'additional_number': 777}, 'important_numbers': [777, 777], 'title': 'update entity', 'verified': False}}
 INFO     api.services.base_api:base_api.py:17 Получен ответ 200 для POST http://localhost:8080/api/create
 INFO     api.services.entity_service:entity_service.py:25 ID успешно созданной сущности: 1
+INFO     api.services.entity_service:entity_service.py:64 Обновление сущности с ID 1 с данными: {'addition': {'additional_info': 'updated additional', 'additional_number': 666}, 'important_numbers': [666, 666], 'title': 'successful update entity', 'verified': True}
+INFO     api.services.base_api:base_api.py:14 Отправка PATCH запроса на http://localhost:8080/api/patch/1 с параметрами: {'json': {'addition': {'additional_info': 'updated additional', 'additional_number': 666}, 'important_numbers': [666, 666], 'title': 'successful update entity', 'verified': True}}
+INFO     api.services.base_api:base_api.py:17 Получен ответ 204 для PATCH http://localhost:8080/api/patch/1
+INFO     api.services.entity_service:entity_service.py:69 Сущность с ID 1 обновлена успешно
 INFO     api.services.entity_service:entity_service.py:31 Получение сущности с ID: 1
 INFO     api.services.base_api:base_api.py:14 Отправка GET запроса на http://localhost:8080/api/get/1 с параметрами: {}
 INFO     api.services.base_api:base_api.py:17 Получен ответ 200 для GET http://localhost:8080/api/get/1
