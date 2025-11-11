@@ -1,4 +1,5 @@
 import pytest
+import logging
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.remote.webdriver import WebDriver
@@ -9,6 +10,13 @@ import os
 from api.services.entity_service import EntityService
 
 from typing import Generator
+
+def pytest_configure() -> None:
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s [%(levelname)s] %(name)s: %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
 
 # Фикстура для UI тестов (веб-драйвер)
 @pytest.fixture(scope='function')
