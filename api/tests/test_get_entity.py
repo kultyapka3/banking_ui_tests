@@ -20,7 +20,7 @@ from api.models.entity import EntityRequest, EntityResponse
 @allure.suite('Positive Tests')
 @pytest.mark.api        # API test
 @pytest.mark.high       # Приортитет - высокий
-def test_get_entity_success(entity_service: EntityService) -> None:
+def test_get_entity_success(entity_service: EntityService, cleanup_entity) -> None:
     initial_title: str = 'get entity'
     initial_verified: bool = False
     initial_important_numbers: List[int] = [4, 4]
@@ -33,6 +33,8 @@ def test_get_entity_success(entity_service: EntityService) -> None:
 
     # Создаём сущность
     created_id: str = entity_service.create_entity(entity_data)
+    # Добавляем ID для автоматического удаления
+    cleanup_entity(created_id)
 
     # Получаем сущность
     retrieved_entity: EntityResponse = entity_service.get_entity(created_id)
@@ -40,6 +42,3 @@ def test_get_entity_success(entity_service: EntityService) -> None:
     # Проверяем созданную сущность по ключевому полю
     assert retrieved_entity.id == int(created_id), \
         f'Ожидалось, что ID будет "{created_id}", но получили "{retrieved_entity.id}"'
-
-    # Удаляем сущность
-    entity_service.delete_entity(created_id)

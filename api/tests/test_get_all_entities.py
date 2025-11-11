@@ -20,7 +20,7 @@ from api.models.entity import EntityRequest, EntityResponse
 @allure.suite('Positive Tests')
 @pytest.mark.api        # API test
 @pytest.mark.high       # Приортитет - высокий
-def test_get_all_entities_success(entity_service: EntityService) -> None:
+def test_get_all_entities_success(entity_service: EntityService, cleanup_entity) -> None:
     titles: List[str] = ['get all entities1', 'get all entities2']
     created_ids: List[str] = []
 
@@ -28,6 +28,8 @@ def test_get_all_entities_success(entity_service: EntityService) -> None:
         entity_data: EntityRequest = EntityRequest(title=title, verified=True, important_numbers=[10])
         created_id: str = entity_service.create_entity(entity_data)     # cоздаём сущность
         created_ids.append(created_id)                                  # записываем id сущности
+        # Добавляем ID для автоматического удаления
+        cleanup_entity(created_id)
 
     # Получаем все сущности
     all_entities: List[EntityResponse] = entity_service.get_all_entities()
@@ -38,7 +40,3 @@ def test_get_all_entities_success(entity_service: EntityService) -> None:
     # Проверяем есть ли созданные сущности
     assert all(int(id) in found_ids for id in created_ids), \
         f'Ожидалось, что ID будут "{created_ids}", но получили "{found_ids}"'
-
-    # Удаляем сущности
-    for created_id in created_ids:
-        entity_service.delete_entity(created_id)

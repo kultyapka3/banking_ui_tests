@@ -9,7 +9,7 @@ import os
 
 from api.services.entity_service import EntityService
 
-from typing import Generator
+from typing import Generator, List, Callable
 
 def pytest_configure() -> None:
     logging.basicConfig(
@@ -35,6 +35,25 @@ def driver() -> Generator[WebDriver, None, None]:
 def entity_service() -> Generator[EntityService, None, None]:
     service = EntityService()
     yield service
+
+# Фикстура для удаления созданных сущностей
+@pytest.fixture(scope='function')
+def cleanup_entity() -> Callable[[str], None]:
+    created_entity_ids: List[str] = []
+
+    # Отслеживаем ID созданных сущностей
+    def track_entity(entity_id: str) -> None:
+        created_entity_ids.append(entity_id)
+
+    yield track_entity
+
+    service = EntityService()
+
+    for entity_id in created_entity_ids:
+        try:
+            service.delete_entity(entity_id)
+        except Exception as e:
+            print(f'Ошибка при удалении сущности {entity_id}: {e}')
 
 # Хук для генерации отчетов Allure
 @pytest.hookimpl(trylast=True)

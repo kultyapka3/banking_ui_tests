@@ -21,7 +21,7 @@ from api.models.entity import EntityRequest, AdditionRequest, EntityResponse
 @allure.suite('Positive Tests')
 @pytest.mark.api        # API test
 @pytest.mark.high       # Приортитет - высокий
-def test_update_entity_success(entity_service: EntityService) -> None:
+def test_update_entity_success(entity_service: EntityService, cleanup_entity) -> None:
     initial_title: str = 'update entity'
     initial_verified: bool = False
     initial_important_numbers: List[int] = [777, 777]
@@ -36,6 +36,8 @@ def test_update_entity_success(entity_service: EntityService) -> None:
 
     # Создаём сущность
     created_id: str = entity_service.create_entity(entity_data)
+    # Добавляем ID для автоматического удаления
+    cleanup_entity(created_id)
 
     updated_title: str = 'successful update entity'
     updated_verified: bool = True
@@ -58,6 +60,3 @@ def test_update_entity_success(entity_service: EntityService) -> None:
     # Проверяем обновленную сущность по ключевому изменению
     assert updated_entity.title == updated_title, \
         f'Ожидалось, что заголовок будет "{updated_title}", но получили "{updated_entity.title}"'
-
-    # Удаляем сущность
-    entity_service.delete_entity(created_id)

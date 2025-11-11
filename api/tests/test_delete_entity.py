@@ -21,7 +21,7 @@ from api.models.entity import EntityRequest, EntityResponse
 @allure.suite('Positive Tests')
 @pytest.mark.api        # API test
 @pytest.mark.high       # Приортитет - высокий
-def test_delete_entity_success(entity_service: EntityService) -> None:
+def test_delete_entity_success(entity_service: EntityService, cleanup_entity) -> None:
     initial_title: str = 'delete entity'
     entity_data: EntityRequest = EntityRequest(
         title=initial_title,
@@ -31,6 +31,8 @@ def test_delete_entity_success(entity_service: EntityService) -> None:
 
     # Создаём сущность
     created_id: str = entity_service.create_entity(entity_data)
+    # Добавляем ID для автоматического удаления
+    cleanup_entity(created_id)
 
     # Получаем сущность
     entity: EntityResponse = entity_service.get_entity(created_id)
